@@ -61,6 +61,8 @@ img {
 
   --icon-nohover-color: rgba(175, 177, 184, 1);
   --icon-foot-color: rgba(255, 255, 255, 0.1);
+
+  --skills-bg-color: rgba(47, 48, 58, 0.8);
 }
 
 .section {
@@ -123,12 +125,41 @@ img {
   border-bottom: 1px solid #ececec;
 }
 
+.index-decor ::after {
+  content: '';
+
+  width: 48px;
+  height: 4px;
+
+  background-image: url(../images/hover.svg);
+
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+.port-decor ::after {
+  position: absolute;
+
+  content: '';
+  width: 78px;
+  height: 4px;
+
+  background-image: url(../images/hover-port.svg);
+  bottom: 0px;
+  left: 0px;
+}
+
+.site-nav .item {
+  position: relative;
+}
+
 .site-nav {
   display: flex;
   margin-left: 93px;
 }
 
-.site-nav .item:not(:last-child) {
+.site-nav :not(:last-child) {
   margin-right: 50px;
 }
 
@@ -274,6 +305,33 @@ img {
   line-height: 1.71;
 }
 /* skills/ 3 picture */
+.thumb {
+  position: relative;
+}
+
+.index-decor {
+  position: relative;
+}
+
+.thumb-back {
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--skills-bg-color);
+  width: 370px;
+  height: 70px;
+
+  color: var(--hero-color);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-transform: uppercase;
+  bottom: 0;
+}
+
 .skills {
   display: flex;
 }
