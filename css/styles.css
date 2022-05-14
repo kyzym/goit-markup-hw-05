@@ -65,6 +65,7 @@ img {
   --skills-bg-color: rgba(47, 48, 58, 0.8);
   --card-hover-bg-color: rgba(33, 150, 243, 0.9);
   --icon-border-color: rgba(0, 0, 0, 0.1);
+  --backdrop-color: rgba(0, 0, 0, 0.2);
 }
 
 .section {
@@ -276,7 +277,7 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: var(--backdrop-color);
 }
 
 .backdrop.is-hidden {
