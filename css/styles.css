@@ -63,6 +63,7 @@ img {
   --icon-foot-color: rgba(255, 255, 255, 0.1);
 
   --skills-bg-color: rgba(47, 48, 58, 0.8);
+  --card-hover-bg-color: rgba(33, 150, 243, 0.9);
 }
 
 .section {
@@ -134,7 +135,7 @@ img {
   background-image: url(../images/hover.svg);
 
   position: absolute;
-  bottom: 0px;
+  bottom: -1px;
   left: 0px;
 }
 
@@ -146,7 +147,7 @@ img {
   height: 4px;
 
   background-image: url(../images/hover-port.svg);
-  bottom: 0px;
+  bottom: -1px;
   left: 0px;
 }
 
@@ -595,6 +596,32 @@ social-list:hover {
   border-right: var(--card-border);
   border-bottom: var(--card-border);
   border-left: var(--card-border);
+}
+
+.card-text {
+  position: absolute;
+  background-color: var(--card-hover-bg-color);
+  width: 100%;
+  height: 100%;
+  top: 0;
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 156%;
+  color: var(--hero-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 34px;
+  opacity: 0;
+}
+
+.card-decor {
+  position: relative;
+}
+
+.card-link:hover .card-text {
+  opacity: 1;
 }
 
 .card-link:hover,
