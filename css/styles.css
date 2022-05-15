@@ -196,6 +196,7 @@ img {
 }
 .adr-svg {
   margin-right: 10px;
+  transition: fill 250ms var(--cubic-transm);
 }
 
 .address {
@@ -297,13 +298,13 @@ img {
   height: 100%;
   background-color: var(--backdrop-color);
   opacity: 1;
-  transition: opacity 250ms var(--cubic-transm);
+  transition: opacity 250ms var(--cubic-transm), visibility 250ms var(--cubic-transm);
 }
 
 .backdrop.is-hidden {
   opacity: 0;
   pointer-events: none;
-  visibility: none;
+  visibility: hidden;
 }
 
 .backdrop.is-hidden .modal {
