@@ -66,6 +66,8 @@ img {
   --card-hover-bg-color: rgba(33, 150, 243, 0.9);
   --icon-border-color: rgba(0, 0, 0, 0.1);
   --backdrop-color: rgba(0, 0, 0, 0.2);
+
+  --cubic-transm: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .section {
@@ -129,28 +131,33 @@ img {
 }
 
 .index-decor ::after {
-  content: '';
-
-  width: 48px;
-  height: 4px;
-
-  background-image: url(../images/hover.svg);
-
   position: absolute;
   bottom: -1px;
   left: 0px;
+
+  content: '';
+  display: block;
+
+  width: 100%;
+  height: 4px;
+
+  background-color: currentColor;
+  border-radius: 4px;
 }
 
 .port-decor ::after {
   position: absolute;
-
-  content: '';
-  width: 78px;
-  height: 4px;
-
-  background-image: url(../images/hover-port.svg);
   bottom: -1px;
   left: 0px;
+
+  content: '';
+  display: block;
+
+  width: 100%;
+  height: 4px;
+
+  background-color: currentColor;
+  border-radius: 4px;
 }
 
 .site-nav .item {
@@ -165,6 +172,9 @@ img {
 .site-nav :not(:last-child) {
   margin-right: 50px;
 }
+.site-nav a {
+  transition: color 250ms var(--cubic-transm);
+}
 
 .site-nav a:hover,
 .site-nav a:focus {
@@ -176,9 +186,12 @@ img {
   align-items: center;
   justify-content: center;
 }
+.address .mail-link {
+  transition: color 250ms var(--cubic-transm);
+}
 
-.item .mail-link:hover,
-.item .mail-link:focus {
+.address .mail-link:hover,
+.address .mail-link:focus {
   fill: var(--accent-color);
 }
 .adr-svg {
@@ -188,6 +201,8 @@ img {
 .address {
   display: flex;
   align-items: center;
+  margin-left: auto;
+  justify-content: flex-end;
 
   fill: var(--sub-test-color);
 }
@@ -195,24 +210,24 @@ img {
 .address .item:not(:last-child) {
   margin-right: 30px;
 }
-
 .address {
   display: flex;
   margin-left: auto;
   justify-content: flex-end;
   align-items: center;
 }
-
 .address a {
+  display: flex;
+  padding-top: 32px;
+  padding-bottom: 32px;
+
   color: var(--sub-text-color);
   letter-spacing: 0.02em;
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
 
-  display: flex;
-  padding-top: 32px;
-  padding-bottom: 32px;
+  transition: color 250ms var(--cubic-transm);
 }
 
 .address a:hover,
@@ -266,8 +281,11 @@ img {
   border-radius: 4px;
 
   padding: 10px 32px;
+
+  transition: background-color 250ms var(--cubic-transm);
 }
-.hero-button:hover {
+.hero-button:hover,
+.hero-button:focus {
   background-color: var(--btn-hover-color);
 }
 
@@ -278,19 +296,27 @@ img {
   width: 100%;
   height: 100%;
   background-color: var(--backdrop-color);
+  opacity: 1;
+  transition: opacity 250ms var(--cubic-transm);
 }
 
 .backdrop.is-hidden {
   opacity: 0;
   pointer-events: none;
+  visibility: none;
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.75);
 }
 
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms var(--cubic-transm);
+  opacity: 1;
   width: 528px;
   height: 581px;
 
@@ -316,6 +342,7 @@ img {
 .features {
   display: flex;
 }
+
 .features-item {
   width: 270px;
 }
@@ -409,9 +436,6 @@ img {
   display: flex;
 }
 
-social-list:hover {
-}
-
 .social-list:not(:last-child) {
   margin-right: 10px;
 }
@@ -457,6 +481,8 @@ social-list:hover {
   fill: var(--icon-nohover-color);
   justify-content: center;
   align-items: center;
+
+  transition: fill 250ms var(--cubic-transm), background-color 250ms var(--cubic-transm);
 }
 
 .icon:hover,
@@ -474,13 +500,16 @@ social-list:hover {
 
 .client {
   display: flex;
+  justify-content: center;
+  align-items: center;
   border: 1px solid var(--icon-nohover-color);
   border-radius: 4px;
   width: 170px;
   height: 92px;
-  justify-content: center;
-  align-items: center;
+
   fill: var(--icon-nohover-color);
+
+  transition: fill 250ms var(--cubic-transm), border 250ms var(--cubic-transm);
 }
 
 .client:hover,
@@ -514,9 +543,11 @@ social-list:hover {
   font-style: normal;
   font-size: 14px;
   line-height: 1.71;
+  transition: color 250ms var(--cubic-transm);
 }
 
-.mail-tel a:hover {
+.mail-tel a:hover,
+.mail-tel a:focus {
   color: var(--accent-color);
 }
 
@@ -561,6 +592,7 @@ social-list:hover {
   fill: var(--hero-color);
   justify-content: center;
   align-items: center;
+  transition: background-color 250ms var(--cubic-transm);
 }
 
 .icon-foot:hover,
@@ -610,6 +642,9 @@ social-list:hover {
 
   padding: 6px 22px;
   border-radius: 4px;
+
+  transition: color 250ms var(--cubic-transm), background-color 250ms var(--cubic-transm),
+    box-shadow 250ms var(--cubic-transm);
 }
 
 .port-button:hover,
@@ -643,29 +678,41 @@ social-list:hover {
 
 .card-text {
   position: absolute;
-  background-color: var(--card-hover-bg-color);
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-left: 24px;
+  padding-right: 24px;
+
+  background-color: var(--card-hover-bg-color);
+
   font-weight: 400;
   font-size: 18px;
   line-height: 156%;
   color: var(--hero-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-left: 34px;
-  opacity: 0;
-  overflow: auto;
+
+  transform: translateY(100%);
+  transition: transform 250ms var(--cubic-transm);
 }
 
 .card-decor {
   position: relative;
+  overflow: hidden;
 }
 
-.card-link:hover .card-text {
-  opacity: 1;
+.card-link:hover .card-text,
+.card-link:focus .card-text {
+  transform: translateY(0);
+}
+
+.card-link {
+  transition: box-shadow 250ms var(--cubic-transm);
 }
 
 .card-link:hover,
